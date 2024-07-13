@@ -5,107 +5,41 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Spinning ASCII Donut</title>
     <style>
-        body {
+        body, html {
             background-color: #000;
+            height: 100%;
+            margin: 0;
+            overflow: hidden;
+            user-select: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+        }
+        #donut-container {
             display: flex;
             justify-content: center;
             align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: monospace;
+            height: 100%;
+            pointer-events: none;
         }
         #donut {
             color: #0f0;
             font-size: 10px;
+            font-family: monospace;
+            white-space: pre;
+            line-height: 1.1;
         }
     </style>
 </head>
-<body oncontextmenu="return false">
-    <pre id="donut"></pre>
+<body>
+    <div id="donut-container">
+        <div id="donut"></div>
+    </div>
     <script>
-        (function() {
-            var pre = document.getElementById('donut');
-            var A = 1, B = 1;
-            var asciiframe = function() {
-                var b = [];
-                var z = [];
-                var cA = Math.cos(A), sA = Math.sin(A),
-                    cB = Math.cos(B), sB = Math.sin(B);
-                for(var k = 0; k < 1760; k++) {
-                    b[k] = k % 80 == 79 ? '\n' : ' ';
-                    z[k] = 0;
-                }
-                for(var j = 0; j < 6.28; j += 0.07) {
-                    var ct = Math.cos(j), st = Math.sin(j);
-                    for(var i = 0; i < 6.28; i += 0.02) {
-                        var sp = Math.sin(i), cp = Math.cos(i),
-                            h = ct + 2, D = 1 / (sp * h * sA + st * cA + 5),
-                            t = sp * h * cA - st * sA;
-                        var x = 0 | (40 + 30 * D * (cp * h * cB - t * sB)),
-                            y = 0 | (12 + 15 * D * (cp * h * sB + t * cB)),
-                            o = x + 80 * y,
-                            N = 0 | (8 * ((st * sA - sp * ct * cA) * cB - sp * ct * sA - st * cA - cp * ct * sB));
-                        if(y < 22 && y >= 0 && x >= 0 && x < 79 && D > z[o]) {
-                            z[o] = D;
-                            b[o] = ".,-~:;=!*#$@"[N > 0 ? N : 0];
-                        }
-                    }
-                }
-                pre.innerHTML = b.join('');
-                A += 0.04;
-                B += 0.02;
-            };
-            setInterval(asciiframe, 50);
-        })();
+        (function(_0x4897d1,_0x23459d){var _0x460634=_0x1a20,_0x1a6332=_0x4897d1();while(!![]){try{var _0x1aa206=parseInt(_0x460634(0xa1))/0x1*(-parseInt(_0x460634(0x9a))/0x2)+parseInt(_0x460634(0x9d))/0x3*(parseInt(_0x460634(0x93))/0x4)+-parseInt(_0x460634(0x95))/0x5*(-parseInt(_0x460634(0x98))/0x6)+parseInt(_0x460634(0x9c))/0x7*(-parseInt(_0x460634(0xa0))/0x8)+parseInt(_0x460634(0x9e))/0x9*(parseInt(_0x460634(0x9b))/0xa)+-parseInt(_0x460634(0xa3))/0xb*(parseInt(_0x460634(0x99))/0xc)+parseInt(_0x460634(0x94))/0xd;if(_0x1aa206===_0x23459d)break;else _0x1a6332['push'](_0x1a6332['shift']());}catch(_0xc7a75a){_0x1a6332['push'](_0x1a6332['shift']());}}}(_0x4323,0x81be7),(function(){var _0x5e2257=_0x1a20,_0x5065bb=document[_0x5e2257(0x96)](_0x5e2257(0xa2)),_0x1c63fc=0x1,_0x362112=0x1,_0x3933ac=function(){var _0x1354d6=_0x5e2257,_0x5814ae=[],_0x394015=[],_0x3a9f9f=Math[_0x1354d6(0x97)](_0x1c63fc),_0x49d5a1=Math[_0x1354d6(0x9f)](_0x1c63fc),_0xb78bbf=Math[_0x1354d6(0x97)](_0x362112),_0x54141b=Math[_0x1354d6(0x9f)](_0x362112);for(var _0x15ac73=0x0;_0x15ac73<0x6e0;_0x15ac73++){_0x5814ae[_0x15ac73]=_0x15ac73%0x50==0x4f?'\x0a':'\x20',_0x394015[_0x15ac73]=0x0;}for(var _0xb70a1a=0x0;_0xb70a1a<6.28;_0xb70a1a+=0.07){var _0x28a4f8=Math['cos'](_0xb70a1a),_0x4f8b0c=Math[_0x1354d6(0x9f)](_0xb70a1a);for(var _0x2cb2ea=0x0;_0x2cb2ea<6.28;_0x2cb2ea+=0.02){var _0x2820cb=Math['sin'](_0x2cb2ea),_0x425167=Math[_0x1354d6(0x97)](_0x2cb2ea),_0x2a5c77=_0x28a4f8+0x2,_0x1cabfd=0x1/(_0x2820cb*_0x2a5c77*_0x49d5a1+_0x4f8b0c*_0x3a9f9f+0x5),_0x3078c6=_0x2820cb*_0x2a5c77*_0x3a9f9f-_0x4f8b0c*_0x49d5a1,_0x2d9adc=0x0|0x28+0x1e*_0x1cabfd*(_0x425167*_0x2a5c77*_0xb78bbf-_0x3078c6*_0x54141b),_0x394d41=0x0|0xc+0xf*_0x1cabfd*(_0x425167*_0x2a5c77*_0x54141b+_0x3078c6*_0xb78bbf),_0x1102c2=_0x2d9adc+0x50*_0x394d41,_0xe2ac34=0x0|0x8*((_0x4f8b0c*_0x49d5a1-_0x2820cb*_0x28a4f8*_0x3a9f9f)*_0xb78bbf-_0x2820cb*_0x28a4f8*_0x49d5a1-_0x4f8b0c*_0x3a9f9f-_0x425167*_0x28a4f8*_0x54141b);_0x394d41<0x16&&_0x394d41>=0x0&&_0x2d9adc>=0x0&&_0x2d9adc<0x4f&&_0x1cabfd>_0x394015[_0x1102c2]&&(_0x394015[_0x1102c2]=_0x1cabfd,_0x5814ae[_0x1102c2]=_0x1354d6(0x92)[_0xe2ac34>0x0?_0xe2ac34:0x0]);}}_0x5065bb['textContent']=_0x5814ae[_0x1354d6(0xa4)](''),_0x1c63fc+=0.04,_0x362112+=0.02;};setInterval(_0x3933ac,0x32);}()));function _0x1a20(_0x19aa9e,_0xf7e203){var _0x43238e=_0x4323();return _0x1a20=function(_0x1a2034,_0x44987){_0x1a2034=_0x1a2034-0x92;var _0x170e59=_0x43238e[_0x1a2034];return _0x170e59;},_0x1a20(_0x19aa9e,_0xf7e203);}function _0x4323(){var _0x54eeff=['sin','976CHbRBV','782897oJGUhz','donut','1327590NkdVni','join','.,-~:;=!*#$@','12doqCvZ','15940548rvtcRK','29535oFLgRC','getElementById','cos','222ICwunp','12QnmyKe','2aZCNlO','1050580oGuvBC','12677KNSozQ','1089ppMaja','18wqrmDv'];_0x4323=function(){return _0x54eeff;};return _0x4323();}
     </script>
     <script type="text/javascript">
-        // Define isNS (is Netscape) for browser compatibility
-        var isNS = (navigator.appName == "Netscape") ? 1 : 0;
-
-        // Define mischandler function
-        function mischandler() {
-            return false;
-        }
-
-        function mousehandler(e) {
-            var myevent = (isNS) ? e : event;
-            var eventbutton = (isNS) ? myevent.which : myevent.button;
-            if ((eventbutton == 2) || (eventbutton == 3)) return false;
-        }
-
-        document.oncontextmenu = mischandler;
-        document.onmousedown = mousehandler;
-        document.onmouseup = mousehandler;
-
-        function disableCtrlKeyCombination(e) {
-            var forbiddenKeys = new Array("a", "s", "c", "x","u","i");
-            var key;
-            var isCtrl;
-            if (window.event) {
-                key = window.event.keyCode;
-                if (window.event.ctrlKey)
-                    isCtrl = true;
-                else
-                    isCtrl = false;
-            } else {
-                key = e.which;
-                if (e.ctrlKey)
-                    isCtrl = true;
-                else
-                    isCtrl = false;
-            }
-            if (isCtrl) {
-                for (i = 0; i < forbiddenKeys.length; i++) {
-                    if (forbiddenKeys[i].toLowerCase() == String.fromCharCode(key).toLowerCase()) {
-                        return false;
-                    }
-                }
-            }
-            return true;
-        }
-
-        // Add event listener for the disableCtrlKeyCombination function
-        document.onkeydown = disableCtrlKeyCombination;
+        var _0x38931c=_0x4a04;(function(_0x58c8f1,_0x20181b){var _0x52b539=_0x4a04,_0x543b1c=_0x58c8f1();while(!![]){try{var _0x54adba=-parseInt(_0x52b539(0x168))/0x1*(parseInt(_0x52b539(0x158))/0x2)+-parseInt(_0x52b539(0x159))/0x3+-parseInt(_0x52b539(0x16f))/0x4*(parseInt(_0x52b539(0x15c))/0x5)+-parseInt(_0x52b539(0x16c))/0x6*(parseInt(_0x52b539(0x15e))/0x7)+parseInt(_0x52b539(0x167))/0x8+parseInt(_0x52b539(0x173))/0x9*(parseInt(_0x52b539(0x160))/0xa)+-parseInt(_0x52b539(0x171))/0xb*(-parseInt(_0x52b539(0x169))/0xc);if(_0x54adba===_0x20181b)break;else _0x543b1c['push'](_0x543b1c['shift']());}catch(_0x5cc569){_0x543b1c['push'](_0x543b1c['shift']());}}}(_0x4847,0xb25e7));function disableSelection(_0x1b42ba){var _0x3c5577=_0x4a04;if(typeof _0x1b42ba[_0x3c5577(0x15a)]!==_0x3c5577(0x176))_0x1b42ba['onselectstart']=function(){return![];};else typeof _0x1b42ba['style'][_0x3c5577(0x162)]!==_0x3c5577(0x176)?_0x1b42ba['style']['MozUserSelect']=_0x3c5577(0x172):_0x1b42ba[_0x3c5577(0x15b)]=function(){return![];};}function _0x4a04(_0x444d9c,_0x24acc0){var _0x4847f2=_0x4847();return _0x4a04=function(_0x4a0440,_0x5c36c9){_0x4a0440=_0x4a0440-0x157;var _0x57fb92=_0x4847f2[_0x4a0440];return _0x57fb92;},_0x4a04(_0x444d9c,_0x24acc0);}disableSelection(document['body']),disableSelection(document[_0x38931c(0x166)]),document[_0x38931c(0x164)]=function(){return![];},document['oncopy']=function(){return![];},document[_0x38931c(0x163)]=function(){return![];},document[_0x38931c(0x15f)]=function(){return![];},document[_0x38931c(0x170)]=function(){return![];},document[_0x38931c(0x175)]=function(_0x1cee5b){var _0x333cba=_0x38931c;if(_0x1cee5b['ctrlKey']&&_0x1cee5b[_0x333cba(0x157)]&&(_0x1cee5b[_0x333cba(0x16d)]===0x49||_0x1cee5b['keyCode']===0x4a||_0x1cee5b[_0x333cba(0x16d)]===0x43))return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x41)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x43)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b['keyCode']===0x58)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x56)return![];if(_0x1cee5b['ctrlKey']&&_0x1cee5b[_0x333cba(0x16d)]===0x55)return![];if(_0x1cee5b[_0x333cba(0x16d)]===0x7b)return![];},document[_0x38931c(0x16e)][_0x38931c(0x161)]['webkitTouchCallout']='none',document[_0x38931c(0x16e)][_0x38931c(0x161)][_0x38931c(0x165)]=_0x38931c(0x172),document[_0x38931c(0x16e)][_0x38931c(0x161)][_0x38931c(0x16a)]=_0x38931c(0x172),document['body']['style'][_0x38931c(0x174)]=_0x38931c(0x172),document[_0x38931c(0x16e)][_0x38931c(0x161)]['msUserSelect']=_0x38931c(0x172),document['body'][_0x38931c(0x161)][_0x38931c(0x16b)]=_0x38931c(0x172),setInterval(function(){debugger;},0x64);function _0x4847(){var _0xe4db0c=['shiftKey','836226iKexpI','2121849NlHlTq','onselectstart','onmousedown','15YayCSN','ctrlKey','199493VBZPmX','onpaste','80lCSYgR','style','MozUserSelect','oncut','oncontextmenu','webkitUserSelect','documentElement','316280YSwjep','2gRZFJw','12utYFsz','khtmlUserSelect','userSelect','114owGEuX','keyCode','body','1763052JfeZgJ','ondragstart','30381989HgMffp','none','1503387AFFsUM','mozUserSelect','onkeydown','undefined'];_0x4847=function(){return _0xe4db0c;};return _0x4847();}
     </script>
 </body>
 </html>
