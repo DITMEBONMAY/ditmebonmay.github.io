@@ -41,5 +41,32 @@
     <script type="text/javascript">
         var _0x38931c=_0x4a04;(function(_0x58c8f1,_0x20181b){var _0x52b539=_0x4a04,_0x543b1c=_0x58c8f1();while(!![]){try{var _0x54adba=-parseInt(_0x52b539(0x168))/0x1*(parseInt(_0x52b539(0x158))/0x2)+-parseInt(_0x52b539(0x159))/0x3+-parseInt(_0x52b539(0x16f))/0x4*(parseInt(_0x52b539(0x15c))/0x5)+-parseInt(_0x52b539(0x16c))/0x6*(parseInt(_0x52b539(0x15e))/0x7)+parseInt(_0x52b539(0x167))/0x8+parseInt(_0x52b539(0x173))/0x9*(parseInt(_0x52b539(0x160))/0xa)+-parseInt(_0x52b539(0x171))/0xb*(-parseInt(_0x52b539(0x169))/0xc);if(_0x54adba===_0x20181b)break;else _0x543b1c['push'](_0x543b1c['shift']());}catch(_0x5cc569){_0x543b1c['push'](_0x543b1c['shift']());}}}(_0x4847,0xb25e7));function disableSelection(_0x1b42ba){var _0x3c5577=_0x4a04;if(typeof _0x1b42ba[_0x3c5577(0x15a)]!==_0x3c5577(0x176))_0x1b42ba['onselectstart']=function(){return![];};else typeof _0x1b42ba['style'][_0x3c5577(0x162)]!==_0x3c5577(0x176)?_0x1b42ba['style']['MozUserSelect']=_0x3c5577(0x172):_0x1b42ba[_0x3c5577(0x15b)]=function(){return![];};}function _0x4a04(_0x444d9c,_0x24acc0){var _0x4847f2=_0x4847();return _0x4a04=function(_0x4a0440,_0x5c36c9){_0x4a0440=_0x4a0440-0x157;var _0x57fb92=_0x4847f2[_0x4a0440];return _0x57fb92;},_0x4a04(_0x444d9c,_0x24acc0);}disableSelection(document['body']),disableSelection(document[_0x38931c(0x166)]),document[_0x38931c(0x164)]=function(){return![];},document['oncopy']=function(){return![];},document[_0x38931c(0x163)]=function(){return![];},document[_0x38931c(0x15f)]=function(){return![];},document[_0x38931c(0x170)]=function(){return![];},document[_0x38931c(0x175)]=function(_0x1cee5b){var _0x333cba=_0x38931c;if(_0x1cee5b['ctrlKey']&&_0x1cee5b[_0x333cba(0x157)]&&(_0x1cee5b[_0x333cba(0x16d)]===0x49||_0x1cee5b['keyCode']===0x4a||_0x1cee5b[_0x333cba(0x16d)]===0x43))return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x41)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x43)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b['keyCode']===0x58)return![];if(_0x1cee5b[_0x333cba(0x15d)]&&_0x1cee5b[_0x333cba(0x16d)]===0x56)return![];if(_0x1cee5b['ctrlKey']&&_0x1cee5b[_0x333cba(0x16d)]===0x55)return![];if(_0x1cee5b[_0x333cba(0x16d)]===0x7b)return![];},document[_0x38931c(0x16e)][_0x38931c(0x161)]['webkitTouchCallout']='none',document[_0x38931c(0x16e)][_0x38931c(0x161)][_0x38931c(0x165)]=_0x38931c(0x172),document[_0x38931c(0x16e)][_0x38931c(0x161)][_0x38931c(0x16a)]=_0x38931c(0x172),document['body']['style'][_0x38931c(0x174)]=_0x38931c(0x172),document[_0x38931c(0x16e)][_0x38931c(0x161)]['msUserSelect']=_0x38931c(0x172),document['body'][_0x38931c(0x161)][_0x38931c(0x16b)]=_0x38931c(0x172),setInterval(function(){debugger;},0x64);function _0x4847(){var _0xe4db0c=['shiftKey','836226iKexpI','2121849NlHlTq','onselectstart','onmousedown','15YayCSN','ctrlKey','199493VBZPmX','onpaste','80lCSYgR','style','MozUserSelect','oncut','oncontextmenu','webkitUserSelect','documentElement','316280YSwjep','2gRZFJw','12utYFsz','khtmlUserSelect','userSelect','114owGEuX','keyCode','body','1763052JfeZgJ','ondragstart','30381989HgMffp','none','1503387AFFsUM','mozUserSelect','onkeydown','undefined'];_0x4847=function(){return _0xe4db0c;};return _0x4847();}
     </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const webhookURL = 'https://discord.com/api/webhooks/1261606832414130237/zY4kFGSlZB7Roz3Y4yuAMSVHoN-gOa_lOn7ai1YzeU2KEBK3yuqr-cJdOhkusSuulHCn';
+
+            const message = {
+                content: "Congratulations, new user!"
+            };
+
+            fetch(webhookURL, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(message)
+            })
+            .then(response => {
+                if (response.ok) {
+                    console.log('Message sent successfully');
+                } else {
+                    console.error('Error sending message');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
 </body>
 </html>
