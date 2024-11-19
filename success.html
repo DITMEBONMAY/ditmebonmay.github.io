@@ -3,54 +3,171 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success</title>
-    <!-- Materialize CSS -->
+    <title>Verification Successful</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
     <style>
+        :root {
+            --primary-gradient-start: #6a11cb;
+            --primary-gradient-end: #2575fc;
+            --secondary-color: #ff9a9e;
+        }
+
         body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background: linear-gradient(135deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+        }
+
+        .verification-container {
+            perspective: 1000px;
+        }
+
+        .card {
+            width: 380px;
+            padding: 30px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
             text-align: center;
-            padding-top: 50px;
+            transform-style: preserve-3d;
+            transform: rotateX(10deg);
+            transition: all 0.6s ease;
         }
-        .checkmark {
-            width: 100px;
-            height: 100px;
-            margin: 20px auto;
-            display: block;
+
+        .card:hover {
+            transform: rotateX(0deg) scale(1.05);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.15);
+        }
+
+        .success-icon {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
             border-radius: 50%;
-            background-color: #4caf50;
-            animation: bounce 1s ease-in-out infinite;
-        }
-        .checkmark:before {
-            content: "✔";
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--secondary-color));
             color: white;
-            font-size: 50px;
+            font-size: 70px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
             position: relative;
-            top: 25px;
-            left: 20px;
+            overflow: hidden;
+            animation: float 2s ease-in-out infinite;
         }
-        @keyframes bounce {
+
+        .success-icon::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: rgba(255, 255, 255, 0.1);
+            transform: rotate(-45deg);
+            animation: shine 3s infinite linear;
+        }
+
+        @keyframes float {
             0%, 100% { transform: translateY(0); }
             50% { transform: translateY(-10px); }
+        }
+
+        @keyframes shine {
+            0% { transform: rotate(-45deg) translateX(-100%); }
+            100% { transform: rotate(-45deg) translateX(100%); }
+        }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--primary-gradient-start);
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1rem;
+            color: #667;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .btn {
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-transform: uppercase;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--primary-gradient-start), var(--primary-gradient-end));
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-45deg);
+            transition: all 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 15px rgba(0, 0, 0, 0.1);
         }
     </style>
 </head>
 <body>
-    <h3>🎉 Members Added Successfully! 🎉</h3>
-    <div class="checkmark"></div>
-    <p>The following users have been added to the server:</p>
-    <ul class="collection">
-        {% for result in results %}
-            <li class="collection-item">{{ result }}</li>
-        {% endfor %}
-    </ul>
-    <a href="/" class="btn blue lighten-1">Go Home</a>
+    <div class="verification-container">
+        <div class="card">
+            <div class="success-icon">
+                <i class="material-icons">check</i>
+            </div>
+            <h3>Verification Complete!</h3>
+            <p>Congratulations! You've been successfully verified and granted access to our exclusive community. 🎉</p>
+            <a href="https://discord.com" class="btn waves-effect waves-light">Return to Discord</a>
+        </div>
+    </div>
+
     <script>
-        confetti({
-            particleCount: 150,
-            spread: 60,
-            origin: { y: 0.6 }
-        });
+        // Enhanced confetti with multiple bursts
+        function triggerConfetti() {
+            confetti({
+                particleCount: 200,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#6a11cb', '#2575fc', '#ff9a9e']
+            });
+
+            // Secondary confetti burst
+            setTimeout(() => {
+                confetti({
+                    particleCount: 150,
+                    spread: 90,
+                    origin: { y: 0.7 },
+                    colors: ['#ff9a9e', '#6a11cb', '#2575fc']
+                });
+            }, 500);
+        }
+
+        // Trigger confetti on page load
+        triggerConfetti();
     </script>
 </body>
 </html>
